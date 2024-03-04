@@ -1,0 +1,38 @@
+GET http://localhost:3000/
+
+###########################
+
+GET http://localhost:3000/api/comics
+###########################
+
+GET http://localhost:3000/api/comics/1
+
+###########################
+
+GET http://localhost:3000/api/comics/999999999
+
+###########################
+
+POST http://localhost:3000/api/comics
+Content-Type: application/json
+
+{
+    "seriesName": "Rodney and the Firestarters",
+    "amountOfIssues": 500,
+    "creator": "Don Don"
+}
+
+###########################
+
+PATCH http://localhost:3000/api/comics/1
+Content-Type: application/json
+
+{
+    "seriesName": "Jackal",
+    "amountOfIssues": 30,
+    "creator": "Bob" 
+}
+
+###########################
+
+DELETE http://localhost:3000/api/comics/1
