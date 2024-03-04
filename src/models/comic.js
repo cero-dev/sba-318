@@ -1,9 +1,8 @@
-const generateID = () => {
-    let id = 0;
-    return () => ++id;
-};
-
-// "Bat Man" 900 Bob Kane
+const generateID = (
+    (id = 0) =>
+    () =>
+      (id += 1)
+  )();
 
 class Comic {
     static #all = [];
@@ -29,16 +28,24 @@ class Comic {
         return Comic.#all.find((comic) => comic.id === Number(id) || null);
     }
 
-    // don't understand how this works, dylan or constance
-    static update(propertiesToUpdate){
-        Object.assign(this, propertiesToUpdate);
+    static update(id, seriesName, amountOfIssues, creator){
+        const comic = this.find(id);
+        if(!comic){
+            return null
+        }
+
+        comic.seriesName = seriesName;
+        comic.amountOfIssues = amountOfIssues;
+        comic.creator = creator;
+        
+        return comic;
     }
 
     static destroy(id){
         const comicIndex = Comic.#all.findIndex((comic) => comic.id === Number(id));
         if(comicIndex === -1) return false;
 
-        Comic.#all.splice(userIndex,1);
+        Comic.#all.splice(comicIndex,1);
         return true;
     }
 }
